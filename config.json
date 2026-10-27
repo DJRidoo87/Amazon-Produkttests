@@ -3,10 +3,28 @@
   "host": "webservices.amazon.de",
   "region": "eu-west-1",
   "itemsPerSearch": 10,
-  "minSavingPercent": 10,
+  "pagesPerSearch": 5,
+  "minSavingPercent": 80,
+  "maxSavingPercent": 100,
   "searches": [
-    { "label": "Handyzubehör", "keywords": "iPhone Schutzglas", "searchIndex": "Electronics" },
-    { "label": "Küche", "keywords": "Küchenhelfer", "searchIndex": "Kitchen" },
-    { "label": "Technik", "keywords": "Bluetooth Kopfhörer", "searchIndex": "Electronics" }
+    { "label": "Elektronik", "keywords": "Sale Angebot", "searchIndex": "Electronics" },
+    { "label": "Computer", "keywords": "Sale Angebot", "searchIndex": "Computers" },
+    { "label": "Küche", "keywords": "Sale Angebot", "searchIndex": "Kitchen" },
+    { "label": "Garten", "keywords": "Sale Angebot", "searchIndex": "Garden" },
+    { "label": "Baumarkt", "keywords": "Sale Angebot", "searchIndex": "DIY" },
+    { "label": "Spielzeug", "keywords": "Sale Angebot", "searchIndex": "Toys" },
+    { "label": "Sport", "keywords": "Sale Angebot", "searchIndex": "SportsAndOutdoors" },
+    { "label": "Bekleidung", "keywords": "Sale Angebot", "searchIndex": "Apparel" },
+    { "label": "Schuhe", "keywords": "Sale Angebot", "searchIndex": "Shoes" },
+    { "label": "Beauty", "keywords": "Sale Angebot", "searchIndex": "Beauty" },
+    { "label": "Drogerie", "keywords": "Sale Angebot", "searchIndex": "HealthPersonalCare" },
+    { "label": "Baby", "keywords": "Sale Angebot", "searchIndex": "Baby" },
+    { "label": "Haustier", "keywords": "Sale Angebot", "searchIndex": "PetSupplies" },
+    { "label": "Auto & Motorrad", "keywords": "Sale Angebot", "searchIndex": "Automotive" },
+    { "label": "Bürobedarf", "keywords": "Sale Angebot", "searchIndex": "OfficeProducts" },
+    { "label": "Beleuchtung", "keywords": "Sale Angebot", "searchIndex": "Lighting" },
+    { "label": "Koffer & Taschen", "keywords": "Sale Angebot", "searchIndex": "Luggage" },
+    { "label": "Musikinstrumente", "keywords": "Sale Angebot", "searchIndex": "MusicalInstruments" },
+    { "label": "Alle Kategorien", "keywords": "Sale Angebot", "searchIndex": "All" }
   ]
 }

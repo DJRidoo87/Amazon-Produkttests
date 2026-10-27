@@ -18,7 +18,7 @@ const hmac = (key, data) => crypto.createHmac('sha256', key).update(data).digest
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest('hex');
 
 // --- Signatur (AWS Signature Version 4) ---------------------------------
-async function searchItems(search) {
+async function searchItems(search, page = 1) {
   const target = 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems';
   const path = '/paapi5/searchitems';
   const service = 'ProductAdvertisingAPI';
@@ -27,6 +27,9 @@ async function searchItems(search) {
     Keywords: search.keywords,
     SearchIndex: search.searchIndex,
     ItemCount: config.itemsPerSearch,
+    ItemPage: page,
+    // Amazon filtert schon auf ihrer Seite vor (erlaubt sind 1 bis 99)
+    MinSavingPercent: Math.min(99, Math.max(1, config.minSavingPercent)),
     PartnerTag: AMAZON_PARTNER_TAG,
     PartnerType: 'Associates',
     Marketplace: config.marketplace,
@@ -101,12 +104,12 @@ function toDeal(item, category) {
 // --- Beispieldaten für den Test ohne Zugang -----------------------------
 function mockDeals() {
   const samples = [
-    ['Handyzubehör', 'Beispiel: Schutzglas-Set', 7.99, 19.99],
-    ['Handyzubehör', 'Beispiel: Magnet-Ladekabel 2 m', 12.49, 16.99],
-    ['Küche', 'Beispiel: Edelstahl-Pfannenset', 39.9, 89.9],
-    ['Küche', 'Beispiel: Messerblock 6-teilig', 24.9, 34.9],
-    ['Technik', 'Beispiel: Bluetooth-Kopfhörer', 29.99, 59.99],
-    ['Technik', 'Beispiel: Powerbank 20.000 mAh', 21.99, 27.99],
+    ['Elektronik', 'Beispiel: Schutzglas-Set', 1.99, 19.99],
+    ['Elektronik', 'Beispiel: Magnet-Ladekabel 2 m', 3.4, 16.99],
+    ['Küche', 'Beispiel: Edelstahl-Pfannenset', 8.99, 89.9],
+    ['Küche', 'Beispiel: Messerblock 6-teilig', 6.9, 34.9],
+    ['Spielzeug', 'Beispiel: Bausteine-Set', 4.99, 29.99],
+    ['Sport', 'Beispiel: Yogamatte', 2.99, 24.99],
   ];
   return samples.map(([category, title, price, originalPrice], i) => ({
     asin: `BEISPIEL${i + 1}`,
@@ -132,22 +135,29 @@ if (MOCK) {
     process.exit(1);
   }
   for (const search of config.searches) {
-    try {
-      const items = await searchItems(search);
-      for (const item of items) {
-        const deal = toDeal(item, search.label);
-        if (deal) deals.push(deal);
+    for (let page = 1; page <= (config.pagesPerSearch ?? 1); page++) {
+      try {
+        const items = await searchItems(search, page);
+        for (const item of items) {
+          const deal = toDeal(item, search.label);
+          if (deal) deals.push(deal);
+        }
+        console.log(`${search.label} (Seite ${page}): ${items.length} Treffer`);
+        if (items.length < config.itemsPerSearch) break; // keine weiteren Seiten
+      } catch (err) {
+        console.error(`${search.label} (Seite ${page}): ${err.message}`);
+        break;
       }
-      console.log(`${search.label}: ${items.length} Treffer`);
-    } catch (err) {
-      console.error(`${search.label}: ${err.message}`);
+      await sleep(1100); // die API erlaubt anfangs nur ca. 1 Anfrage pro Sekunde
     }
-    await sleep(1100); // die API erlaubt anfangs nur ca. 1 Anfrage pro Sekunde
   }
 }
 
+// gleiche Produkte aus mehreren Suchen nur einmal behalten
+deals = [...new Map(deals.map((d) => [d.asin, d])).values()];
+
 deals = deals
-  .filter((d) => d.percent >= config.minSavingPercent)
+  .filter((d) => d.percent >= config.minSavingPercent && d.percent <= (config.maxSavingPercent ?? 100))
   .sort((a, b) => b.percent - a.percent);
 
 await writeFile(
