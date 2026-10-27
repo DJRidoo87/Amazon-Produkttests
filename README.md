@@ -1,2 +1,0 @@
-# Amazon-Produkttests
-Amazon Produkttests
