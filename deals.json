@@ -1,0 +1,72 @@
+{
+  "updatedAt": "2026-10-27T20:01:54.334Z",
+  "mock": true,
+  "deals": [
+    {
+      "asin": "BEISPIEL1",
+      "title": "Beispiel: Schutzglas-Set",
+      "category": "Elektronik",
+      "price": 1.99,
+      "originalPrice": 19.99,
+      "currency": "EUR",
+      "percent": 90,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL3",
+      "title": "Beispiel: Edelstahl-Pfannenset",
+      "category": "Küche",
+      "price": 8.99,
+      "originalPrice": 89.9,
+      "currency": "EUR",
+      "percent": 90,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL6",
+      "title": "Beispiel: Yogamatte",
+      "category": "Sport",
+      "price": 2.99,
+      "originalPrice": 24.99,
+      "currency": "EUR",
+      "percent": 88,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL5",
+      "title": "Beispiel: Bausteine-Set",
+      "category": "Spielzeug",
+      "price": 4.99,
+      "originalPrice": 29.99,
+      "currency": "EUR",
+      "percent": 83,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL2",
+      "title": "Beispiel: Magnet-Ladekabel 2 m",
+      "category": "Elektronik",
+      "price": 3.4,
+      "originalPrice": 16.99,
+      "currency": "EUR",
+      "percent": 80,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL4",
+      "title": "Beispiel: Messerblock 6-teilig",
+      "category": "Küche",
+      "price": 6.9,
+      "originalPrice": 34.9,
+      "currency": "EUR",
+      "percent": 80,
+      "image": null,
+      "url": "#"
+    }
+  ]
+}
