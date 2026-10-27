@@ -1,0 +1,40 @@
+name: Angebote aktualisieren
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # jede volle Stunde (Zeitangabe in UTC)
+  workflow_dispatch:       # erlaubt auch manuelles Starten über den Reiter "Aktionen"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Preise von Amazon abrufen
+        env:
+          AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
+          AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
+        run: |
+          if [ -z "$AMAZON_ACCESS_KEY" ] || [ -z "$AMAZON_SECRET_KEY" ] || [ -z "$AMAZON_PARTNER_TAG" ]; then
+            echo "Amazon-Zugangsdaten fehlen (Settings > Secrets). deals.json bleibt unverändert."
+            exit 0
+          fi
+          node fetch-deals.mjs
+
+      - name: Änderungen speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deals.json
+          git diff --staged --quiet || (git commit -m "Angebote aktualisiert" && git push)
