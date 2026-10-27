@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJRidoo Vergleiche</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Segoe UI, Arial, sans-serif;
+            background:#f5f7fa;
+            color:#333;
+            line-height:1.6;
+        }
+
+        header{
+            background:#111827;
+            color:white;
+            padding:18px 0;
+            box-shadow:0 2px 15px rgba(0,0,0,.15);
+        }
+
+        .container{
+            width:90%;
+            max-width:1200px;
+            margin:auto;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }
+
+        .logo svg{
+            width:60px;
+            height:60px;
+        }
+
+        .logo-text{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .logo-title{
+            font-size:28px;
+            font-weight:700;
+            letter-spacing:1px;
+        }
+
+        .logo-sub{
+            font-size:13px;
+            color:#9ca3af;
+            letter-spacing:2px;
+            text-transform:uppercase;
+        }
+
+        nav{
+            margin-top:15px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-right:25px;
+            transition:.3s;
+        }
+
+        nav a:hover{
+            color:#22c55e;
+        }
+
+        .hero{
+            background:linear-gradient(135deg,#15803d,#22c55e);
+            color:white;
+            text-align:center;
+            padding:110px 20px;
+        }
+
+        .hero h1{
+            font-size:52px;
+            margin-bottom:20px;
+        }
+
+        .hero p{
+            max-width:800px;
+            margin:auto;
+            font-size:20px;
+        }
+
+        .button{
+            display:inline-block;
+            margin-top:35px;
+            padding:15px 35px;
+            background:white;
+            color:#15803d;
+            font-weight:bold;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .content{
+            padding:80px 20px;
+        }
+
+        .content h2{
+            text-align:center;
+            margin-bottom:25px;
+            font-size:36px;
+        }
+
+        .content p{
+            max-width:900px;
+            text-align:center;
+            margin:0 auto 18px auto;
+        }
+
+        .stats{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:25px;
+            margin-top:55px;
+        }
+
+        .stat{
+            background:white;
+            width:280px;
+            padding:35px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+        }
+
+        .stat h3{
+            color:#16a34a;
+            font-size:42px;
+            margin-bottom:10px;
+        }
+
+        .featured{
+            padding:20px 20px 60px;
+        }
+
+        .featured h2{
+            text-align:center;
+            font-size:32px;
+            margin-bottom:30px;
+        }
+
+        .product-card{
+            max-width:900px;
+            margin:0 auto;
+            background:white;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+            padding:35px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:30px;
+            align-items:center;
+        }
+
+        .product-visual{
+            flex:1 1 240px;
+            min-height:200px;
+            border-radius:12px;
+            background:linear-gradient(135deg,#dcfce7,#f0fdf4);
+            color:#15803d;
+            font-weight:600;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:16px;
+        }
+
+        .product-info{
+            flex:1 1 320px;
+        }
+
+        .product-info .tag{
+            display:inline-block;
+            font-size:13px;
+            background:#dcfce7;
+            color:#15803d;
+            border-radius:999px;
+            padding:2px 12px;
+            margin-bottom:10px;
+        }
+
+        .product-info h3{
+            font-size:24px;
+            margin-bottom:10px;
+        }
+
+        .product-info ul{
+            margin:0 0 20px 20px;
+            color:#555;
+        }
+
+        .product-actions{
+            display:flex;
+            flex-wrap:wrap;
+            gap:12px;
+        }
+
+        .btn-green{
+            display:inline-block;
+            padding:12px 24px;
+            background:#16a34a;
+            color:white;
+            font-weight:bold;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .btn-green:hover{
+            background:#15803d;
+        }
+
+        .btn-outline{
+            display:inline-block;
+            padding:11px 24px;
+            border:1px solid #16a34a;
+            color:#16a34a;
+            font-weight:bold;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        .btn-outline:hover{
+            background:#f0fdf4;
+        }
+
+        .notice{
+            max-width:1000px;
+            margin:50px auto;
+            padding:20px;
+            background:#fff8db;
+            border:1px solid #f3db84;
+            border-radius:10px;
+        }
+
+        footer{
+            background:#111827;
+            color:white;
+            text-align:center;
+            padding:30px;
+            margin-top:50px;
+        }
+
+        @media(max-width:768px){
+
+            .hero h1{
+                font-size:36px;
+            }
+
+            .logo-title{
+                font-size:22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="logo">
+
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#22c55e"/>
+                        <stop offset="100%" stop-color="#15803d"/>
+                    </linearGradient>
+                </defs>
+
+                <circle cx="50" cy="50" r="45" fill="url(#grad)"/>
+
+                <path d="M25 35 L50 25 L75 35 L50 45 Z"
+                      fill="white"/>
+
+                <path d="M25 65 L50 55 L75 65 L50 75 Z"
+                      fill="white"/>
+
+                <line x1="50" y1="45" x2="50" y2="55"
+                      stroke="white"
+                      stroke-width="5"/>
+            </svg>
+
+            <div class="logo-text">
+                <div class="logo-title">DJRidoo</div>
+                <div class="logo-sub">Vergleiche & Kaufberatung</div>
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="index.html">Startseite</a>
+            <a href="#">Vergleiche</a>
+            <a href="deals.html">Angebote</a>
+            <a href="#">Tests</a>
+            <a href="#">Kaufberater</a>
+            <a href="impressum.html">Impressum</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Produkte vergleichen. Clever einkaufen.</h1>
+
+    <p>
+        Ehrliche Vergleiche, übersichtliche Kaufberatung
+        und die wichtigsten Informationen auf einen Blick.
+    </p>
+
+    <a href="#produkt" class="button">Jetzt entdecken</a>
+</section>
+
+<section class="content">
+
+    <h2>Willkommen bei DJRidoo Vergleiche</h2>
+
+    <p>
+        Bevor du Geld ausgibst, solltest du wissen,
+        welches Produkt wirklich zu deinen Anforderungen passt.
+    </p>
+
+    <p>
+        Wir vergleichen Funktionen, Bewertungen und Eigenschaften,
+        damit du schneller die richtige Entscheidung triffst.
+    </p>
+
+    <p>
+        Von Technik über Werkzeuge bis hin zu Haushaltsgeräten findest
+        du bei uns übersichtliche Kaufberatungen und Vergleiche.
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>100+</h3>
+            <p>Geplante Vergleiche</p>
+        </div>
+
+        <div class="stat">
+            <h3>1000+</h3>
+            <p>Produkte im Fokus</p>
+        </div>
+
+        <div class="stat">
+            <h3>24/7</h3>
+            <p>Jederzeit verfügbar</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="featured" id="produkt">
+    <div class="container">
+
+        <h2>Produkt im Fokus</h2>
+
+        <div class="product-card">
+
+            <div class="product-visual">
+                <!-- Eigenes Produktfoto einsetzen: <img src="bilder/produkt.jpg" alt="TOCOL Panzerglas iPhone 17 Pro"> -->
+                Platz für dein Produktfoto
+            </div>
+
+            <div class="product-info">
+                <span class="tag">Handyzubehör</span>
+                <h3>TOCOL Panzerglas für iPhone 17 Pro (2er-Pack)</h3>
+                <ul>
+                    <li>2 Schutzgläser im Set</li>
+                    <li>9H-Härte, kratzfest laut Hersteller</li>
+                    <li>Blasenfreie Montage mit Installationshilfe</li>
+                    <li>Beschichtung gegen Fingerabdrücke</li>
+                    <li>2 Jahre Garantie</li>
+                </ul>
+                <div class="product-actions">
+                    <a class="btn-green"
+                       href="https://www.amazon.de/dp/B0GDX71PSK/?tag=anazonwerbepa-21"
+                       target="_blank" rel="sponsored noopener">Preis auf Amazon ansehen</a>
+                    <a class="btn-outline" href="produkt-tocol.html">Mehr Details</a>
+                </div>
+            </div>
+
+        </div>
+
+        <p style="text-align:center;margin-top:30px;">
+            <a class="btn-outline" href="deals.html">Alle Angebote nach Ersparnis ansehen</a>
+        </p>
+
+    </div>
+</section>
+
+<div class="notice">
+    Hinweis: Diese Website kann Affiliate-Links enthalten.
+    Beim Kauf über solche Links kann eine Provision entstehen,
+    ohne zusätzliche Kosten für den Käufer.
+</div>
+
+<footer>
+    © 2026 DJRidoo Vergleiche
+</footer>
+
+</body>
+</html>

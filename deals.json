@@ -1,0 +1,72 @@
+{
+  "updatedAt": "2026-10-27T19:31:47.368Z",
+  "mock": true,
+  "deals": [
+    {
+      "asin": "BEISPIEL1",
+      "title": "Beispiel: Schutzglas-Set",
+      "category": "Handyzubehör",
+      "price": 7.99,
+      "originalPrice": 19.99,
+      "currency": "EUR",
+      "percent": 60,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL3",
+      "title": "Beispiel: Edelstahl-Pfannenset",
+      "category": "Küche",
+      "price": 39.9,
+      "originalPrice": 89.9,
+      "currency": "EUR",
+      "percent": 56,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL5",
+      "title": "Beispiel: Bluetooth-Kopfhörer",
+      "category": "Technik",
+      "price": 29.99,
+      "originalPrice": 59.99,
+      "currency": "EUR",
+      "percent": 50,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL4",
+      "title": "Beispiel: Messerblock 6-teilig",
+      "category": "Küche",
+      "price": 24.9,
+      "originalPrice": 34.9,
+      "currency": "EUR",
+      "percent": 29,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL2",
+      "title": "Beispiel: Magnet-Ladekabel 2 m",
+      "category": "Handyzubehör",
+      "price": 12.49,
+      "originalPrice": 16.99,
+      "currency": "EUR",
+      "percent": 26,
+      "image": null,
+      "url": "#"
+    },
+    {
+      "asin": "BEISPIEL6",
+      "title": "Beispiel: Powerbank 20.000 mAh",
+      "category": "Technik",
+      "price": 21.99,
+      "originalPrice": 27.99,
+      "currency": "EUR",
+      "percent": 21,
+      "image": null,
+      "url": "#"
+    }
+  ]
+}

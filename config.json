@@ -1,0 +1,12 @@
+{
+  "marketplace": "www.amazon.de",
+  "host": "webservices.amazon.de",
+  "region": "eu-west-1",
+  "itemsPerSearch": 10,
+  "minSavingPercent": 10,
+  "searches": [
+    { "label": "Handyzubehör", "keywords": "iPhone Schutzglas", "searchIndex": "Electronics" },
+    { "label": "Küche", "keywords": "Küchenhelfer", "searchIndex": "Kitchen" },
+    { "label": "Technik", "keywords": "Bluetooth Kopfhörer", "searchIndex": "Electronics" }
+  ]
+}
